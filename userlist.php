@@ -30,7 +30,7 @@ if (isset($_GET['sort'])) {
 	$sort_by = $_GET['sort'];
 } else {
 	$sort_query = 'username ASC';
-	$sort_by = '';
+	$sort_by = 'username';
 }
 
 // Create any SQL for the WHERE clause
@@ -59,6 +59,7 @@ $paging_links = paginate($num_pages, $p, 'userlist.php?username='.urlencode($use
 
 define('LUNA_ALLOW_INDEX', 1);
 define('LUNA_ACTIVE_PAGE', 'userlist');
+include LUNA_ROOT.'header.php';
 require load_page('header.php');
 
 require load_page('users.php');

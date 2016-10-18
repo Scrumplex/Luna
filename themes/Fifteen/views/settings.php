@@ -133,7 +133,7 @@ else
 				$accents = forum_list_accents('main');
 		
 				foreach ($accents as $temp) {
-					if ($luna_user['color_scheme'] == $temp)
+					if ($user['color_scheme'] == $temp)
 						echo '<label class="btn btn-primary color-accent accent-'.$temp.' active"><input type="radio" name="form[color_scheme]" id="'.$temp.'" value="'.$temp.'" checked></label>';
 					else
 						echo '<label class="btn btn-primary color-accent accent-'.$temp.'"> <input type="radio" name="form[color_scheme]" id="'.$temp.'" value="'.$temp.'"></label>';
@@ -489,7 +489,7 @@ else
 									</div>
 								</div>
 								<hr />
-							<?php } else if ($luna_user['g_moderator'] == '1' || $user['g_id'] == LUNA_ADMIN) { ?>
+							<?php } else if ($user['g_moderator'] == '1' || $user['g_id'] == LUNA_ADMIN) { ?>
 								<div class="form-group">
 									<label class="col-sm-3 control-label"><?php _e('Delete or ban user', 'luna') ?></label>
 									<div class="col-sm-9">

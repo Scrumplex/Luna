@@ -6,16 +6,16 @@
  */
 
 class Version {
-	const LUNA_VERSION = '2.0.2';
+	const LUNA_VERSION = '2.0.6';
     const LUNA_BRANCH = '2.0';
-	const LUNA_CORE_VERSION = '2.0.5754';
+	const LUNA_CORE_VERSION = '2.0.5770';
 	const LUNA_CODE_NAME = 'Emerald';
 
 	// The database version number, every change in the database requires this number to go one up
-	const LUNA_DB_VERSION = '91.27';
+	const LUNA_DB_VERSION = '91.26';
 
 	// The parser version number, every change to the parser requires this number to go one up
-	const LUNA_PARSER_VERSION = '11.4.1';
+	const LUNA_PARSER_VERSION = '11.4.2';
 
 	// The search index version number, every change to the search index requires this number to go one up
 	const LUNA_SI_VERSION = '2.0';
