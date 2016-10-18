@@ -1360,6 +1360,19 @@ function is_all_uppercase($string) {
 	return utf8_strtoupper($string) == $string && utf8_strtolower($string) != $string;
 }
 
+//
+// endsWith and startsWith functions
+//
+function startsWith($haystack, $needle) {
+	// search backwards starting from haystack length characters from the end
+	return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== false;
+}
+
+function endsWith($haystack, $needle) {
+	// search forward starting from end minus needle length characters
+	return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
+}
+
 
 //
 // Inserts $element into $input at $offset

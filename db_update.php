@@ -294,7 +294,7 @@ switch ($stage) {
 		build_config(1, 'o_enable_advanced_search', '1');
 
         // ModernBB 3.4 upgrade support
-		build_config(1, 'o_moderated_by', '1')
+		build_config(1, 'o_moderated_by', '1');
 
 		// ModernBB 3.4 Update 1 upgrade support
 		$db->add_field('users', 'facebook', 'VARCHAR(30)', true, null) or error('Unable to add facebook field to user table', __FILE__, __LINE__, $db->error());
@@ -646,6 +646,7 @@ switch ($stage) {
 		build_config(2, 'o_inbox_notification', 'o_pms_notification');
 		build_config(0, 'o_has_posted');
 
+
 		$db->query('ALTER TABLE '.$db->prefix.'users CHANGE num_comments num_comments INT(10) NOT NULL DEFAULT \'0\'') or error('Unable to alter num_comments field', __FILE__, __LINE__, $db->error());
 		$db->query('UPDATE '.$db->prefix.'users SET num_comments=0 WHERE num_comments=null') or error('Unable to alter num_comments field', __FILE__, __LINE__, $db->error());
 
@@ -708,6 +709,10 @@ switch ($stage) {
         $db->add_field('comments', 'admin_note', 'MEDIUMTEXT', true) or error('Unable to admin note field to comments', __FILE__, __LINE__, $db->error());
         
         $db->query('UPDATE '.$db->prefix.'groups SET g_moderator=1 WHERE g_id=1') or error('Unable to update group permissions for admins', __FILE__, __LINE__, $db->error());
+
+        //SMTP Secure update
+        build_config(0, 'o_smtp_ssl');
+        build_config(1, 'o_smtp_secure', 'none');
 
 		// Luna 3.0 upgrade support
         /*

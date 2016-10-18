@@ -59,8 +59,8 @@ if (isset($_POST['form_sent'])) {
 		'default_email_setting'	=> intval($_POST['form']['default_email_setting']),
 		'smtp_host'				=> luna_trim($_POST['form']['smtp_host']),
 		'smtp_user'				=> luna_trim($_POST['form']['smtp_user']),
-		'smtp_ssl'				=> isset($_POST['form']['smtp_ssl']) ? '1' : '0',
-		'gzip'							=> isset($_POST['form']['gzip']) ? '1' : '0',
+		'smtp_secure'			=> luna_trim($_POST['form']['smtp_secure']),
+		'gzip'					=> isset($_POST['form']['gzip']) ? '1' : '0',
 		'allow_banned_email'	=> isset($_POST['form']['allow_banned_email']) ? '1' : '0',
 		'allow_dupe_email'		=> isset($_POST['form']['allow_dupe_email']) ? '1' : '0',
 	);
@@ -638,12 +638,13 @@ foreach ($timezones as $timezone) {
                         <div class="form-group">
                             <label class="col-sm-3 control-label"><?php _e('SMTP encryption', 'luna') ?></label>
                             <div class="col-sm-9">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="form[smtp_ssl]" value="1" <?php if ($luna_config['o_smtp_ssl'] == '1') echo ' checked' ?> />
-                                        <?php _e('Encrypts the connection to the SMTP server using SSL, only when required and supported.', 'luna') ?>
-                                    </label>
-                                </div>
+                                <select class="form-control" name="form[smtp_secure]">
+                                    <option value="none" <?php if ($luna_config['o_smtp_secure'] == 'none') echo 'selected' ?>>None</option>
+                                    <option value="ssl" <?php if ($luna_config['o_smtp_secure'] == 'ssl') echo 'selected' ?>>SSL</option>
+                                    <option value="sslic" <?php if ($luna_config['o_smtp_secure'] == 'sslic') echo 'selected' ?>>SSL (Ignore certificate validation)</option>
+                                    <option value="tls" <?php if ($luna_config['o_smtp_secure'] == 'tls') echo 'selected' ?>>STARTTLS</option>
+                                    <option value="tlsic" <?php if ($luna_config['o_smtp_secure'] == 'tlsic') echo 'selected' ?>>STARTTLS (Ignore certificate validation)</option>
+                                </select>
                             </div>
                         </div>
                     </fieldset>

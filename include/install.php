@@ -1488,7 +1488,7 @@ class Installer {
 			'o_smtp_host'				=> NULL,
 			'o_smtp_user'				=> NULL,
 			'o_smtp_pass'				=> NULL,
-			'o_smtp_ssl'				=> 0,
+			'o_smtp_secure'				=> "none",
 			'o_regs_allow'				=> 1,
 			'o_regs_verify'				=> 0,
 			'o_enable_advanced_search'	=> 1,
